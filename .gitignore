@@ -1,89 +1,57 @@
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
+# ------------------------
+# Ignorar carpetas del sistema
+# ------------------------
+.DS_Store
+Thumbs.db
 
-# C extensions
-*.so
-
-# Distribution / packaging
-.Python
+# ------------------------
+# Ignorar entornos virtuales
+# ------------------------
+.venv/
 env/
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-*.egg-info/
-.installed.cfg
-*.egg
+venv/
 
-# PyInstaller
-#  Usually these files are written by a python script from a template
-#  before PyInstaller builds the exe, so as to inject date/other infos into it.
-*.manifest
-*.spec
-
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
-
-# Unit test / coverage reports
-htmlcov/
-.tox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*.cover
-
-# Translations
-*.mo
-*.pot
-
-# Django stuff:
+# ------------------------
+# Ignorar archivos de configuración personales
+# ------------------------
+*.env
 *.log
 
-# Sphinx documentation
-docs/_build/
-
-# PyBuilder
-target/
-
-# DotEnv configuration
-.env
-
-# Database
-*.db
-*.rdb
-
-# Pycharm
-.idea
-
-# VS Code
-.vscode/
-
-# Spyder
-.spyproject/
-
-# Jupyter NB Checkpoints
+# ------------------------
+# Ignorar Jupyter checkpoints
+# ------------------------
 .ipynb_checkpoints/
 
-# exclude data from source control by default
-/data/
+# ------------------------
+# Ignorar outputs temporales
+# ------------------------
+*.pyc
+__pycache__/
 
-# Mac OS-specific storage files
-.DS_Store
+# ------------------------
+# Ignorar modelos y pesos
+# ------------------------
+*.pkl
+*.joblib
+*.h5
+*.onnx
+*.pt
 
-# vim
-*.swp
-*.swo
+# ------------------------
+# Ignorar datasets pesados por defecto
+# ------------------------
+data/*
+!data/raw/
+!data/raw/diseño de registro.xlsx
+!data/raw/dataset_eph_tdf.xlsx
+!data/processed/
+!data/processed/dataset_eph_tdf_procesado.xlsx
 
-# Mypy cache
-.mypy_cache/
+# ------------------------
+# Ignorar archivos multimedia
+# ------------------------
+*.mp4
+*.mov
+*.avi
+*.wav
+*.flac
