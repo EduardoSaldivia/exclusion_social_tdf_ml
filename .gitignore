@@ -40,12 +40,7 @@ __pycache__/
 # ------------------------
 # Ignorar datasets pesados por defecto
 # ------------------------
-data/*
-!data/raw/
-!data/raw/diseño de registro.xlsx
-!data/raw/dataset_eph_tdf.xlsx
-!data/processed/
-!data/processed/dataset_eph_tdf_procesado.xlsx
+- data/
 
 # ------------------------
 # Ignorar archivos multimedia
