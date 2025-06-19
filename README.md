@@ -1,57 +1,124 @@
-exclusion_social_tdf_ml
-==============================
 
-Predicción de Exclusion Social en Hogares de Tierra del Fuego
+# PREDICCIÓN DE EXCLUSIÓN SOCIAL EN HOGARES DE TIERRA DEL FUEGO
 
-Project Organization
-------------
+![Python](https://img.shields.io/badge/Python-3.10+-blue)
+![scikit-learn](https://img.shields.io/badge/scikit--learn-ML-orange)
+![EPH](https://img.shields.io/badge/EPH-INDEC-informational)
+![Estado](https://img.shields.io/badge/Estado-Activa-brightgreen)
 
-    ├── LICENSE
-    ├── Makefile           <- Makefile with commands like `make data` or `make train`
-    ├── README.md          <- The top-level README for developers using this project.
-    ├── data
-    │   ├── external       <- Data from third party sources.
-    │   ├── interim        <- Intermediate data that has been transformed.
-    │   ├── processed      <- The final, canonical data sets for modeling.
-    │   └── raw            <- The original, immutable data dump.
-    │
-    ├── docs               <- A default Sphinx project; see sphinx-doc.org for details
-    │
-    ├── models             <- Trained and serialized models, model predictions, or model summaries
-    │
-    ├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
-    │                         the creator's initials, and a short `-` delimited description, e.g.
-    │                         `1.0-jqp-initial-data-exploration`.
-    │
-    ├── references         <- Data dictionaries, manuals, and all other explanatory materials.
-    │
-    ├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
-    │   └── figures        <- Generated graphics and figures to be used in reporting
-    │
-    ├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
-    │                         generated with `pip freeze > requirements.txt`
-    │
-    ├── setup.py           <- makes project pip installable (pip install -e .) so src can be imported
-    ├── src                <- Source code for use in this project.
-    │   ├── __init__.py    <- Makes src a Python module
-    │   │
-    │   ├── data           <- Scripts to download or generate data
-    │   │   └── make_dataset.py
-    │   │
-    │   ├── features       <- Scripts to turn raw data into features for modeling
-    │   │   └── build_features.py
-    │   │
-    │   ├── models         <- Scripts to train models and then use trained models to make
-    │   │   │                 predictions
-    │   │   ├── predict_model.py
-    │   │   └── train_model.py
-    │   │
-    │   └── visualization  <- Scripts to create exploratory and results oriented visualizations
-    │       └── visualize.py
-    │
-    └── tox.ini            <- tox file with settings for running tox; see tox.readthedocs.io
+---
+
+## 📌 OBJETIVO GENERAL
+
+DESARROLLAR MODELOS DE APRENDIZAJE AUTOMÁTICO CAPACES DE **PREDECIR SITUACIONES DE EXCLUSIÓN SOCIAL** EN HOGARES DE LA PROVINCIA DE **TIERRA DEL FUEGO, ARGENTINA**, UTILIZANDO MICRODATOS DE LA **ENCUESTA PERMANENTE DE HOGARES (EPH)** DEL INDEC. EL OBJETIVO ES APORTAR HERRAMIENTAS QUE PERMITAN IDENTIFICAR HOGARES EN CONTEXTOS VULNERABLES Y ORIENTAR POLÍTICAS PÚBLICAS MÁS EFECTIVAS.
+
+---
+## 📊 VIDEO
+https://drive.google.com/file/d/1Pgl27LhZi8VzNw9nXJ_rS9Xzew7tsici/view?usp=sharing
+---
+
+## 📂 ESTRUCTURA DEL PROYECTO
+
+ORGANIZADO SIGUIENDO EL ESTÁNDAR DE LA PLANTILLA **COOKIECUTTER DATA SCIENCE**, EL PROYECTO MANTIENE UNA SEPARACIÓN CLARA ENTRE DATOS, CÓDIGO Y DOCUMENTACIÓN:
 
 
---------
 
-<p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
+```
+├── data/
+│   │
+│   └── raw/                                    # DATOS ORIGINALES SIN PROCESAR
+│       │
+│       ├── dataset_eph_tdf.xlsx                # DATSET SIN PROCESAR (FILTRADO AGLOMERADO: 31)
+│       │
+│       ├── diseño_de_registro.xlsx             # DATOS DE REGISTRO DE LA EPH
+│       │
+│       └── dolar_trimestral_2016_2024.xlsx     # DATASET DEL DOLAR TRIMESTRAL (2016-2024)
+│   │
+│   └── interim/                                # DATOS PREPROCESADOS
+│       │
+│       └── dataset_eph_tdf_2.xlsx              # DATASET PREPROCESADO
+│   │
+│   └── processed/                              # DATOS LISTOS PARA MODELAR
+│       │
+│       ├── dataset_eph_tdf_modelado.xlsx       # DATASET FINAL
+│       │
+│       └── diseño_de_registro_modelado.xlsx    # DATOS DE REGISTRO
+│
+├── notebooks/                                  # NOTEBOOKS DEL PROYECTO
+│   │
+│   ├── 01_exploracion.ipynb                    # ANÁLISIS EXPLORATORIO
+│   │
+│   ├── 02_procesamiento.ipynb                  # PROCESAMIENTO DE DATOS
+│   │
+│   └── 03_modelado.ipynb                       # MODELADO
+│
+├── src/                                        # CÓDIGO FUENTE DEL PROYECTO
+├── models/                                     # MODELOS ENTRENADOS
+└── reports/                                    # GRÁFICOS Y REPORTES
+```
+
+---
+
+## 📊 DATOS UTILIZADOS
+
+- **EPH (ENCUESTA PERMANENTE DE HOGARES)** – INDEC  
+  - AGLOMERADO 31 (USHUAIA - RÍO GRANDE)
+  - TRIMESTRES DEL 2016 AL 2024
+  - NIVEL HOGAR
+
+- **TIPO DE VARIABLES**:
+  - **HABITACIONALES**
+  - **ECONÓMICAS Y LABORALES**
+  - **SOCIODEMOGRÁFICAS**
+
+- **DÓLARs TRIMESTRAL (2016–2024)**  
+  UTILIZADO PARA AJUSTAR INGRESOS Y NEUTRALIZAR EL EFECTO INFLACIONARIO.
+
+---
+
+## 🧪 PROCESO DE TRABAJO
+
+1. **EXPLORACIÓN Y ANÁLISIS DE DATOS (EDA)**
+   - ANÁLISIS DETALLADO POR VARIABLE, CON INTERPRETACIONES EN CONTEXTO SOCIAL.
+
+2. **PROCESAMIENTO**
+   - LIMPIEZA Y TRANSFORMACIÓN DE VARIABLES
+   - CONVERSIÓN DE INGRESOS A DÓLARES Y PESOS AJUSTADOS A 2025
+   - CODIFICACIÓN Y TRATAMIENTO DE VALORES ATÍPICOS
+
+3. **MODELADO**
+   - APLICACIÓN DE ALGORITMOS DE ML (LOGISTIC REGRESSION, RANDOM FOREST, ETC.)
+   - MÉTRICAS: ACCURACY, F1-SCORE, RECALL, PRECISIÓN.
+   - SELECCIÓN DEL MEJOR MODELO POR DESEMPEÑO Y CAPACIDAD EXPLICATIVA
+
+4. **EVALUACIÓN E INTERPRETACIÓN**
+   - COMPARACIÓN DE MODELOS
+   - IMPORTANCIA DE VARIABLES
+   - REFLEXIONES SOCIALES SOBRE LOS RESULTADOS
+
+---
+
+## 🛠️ TECNOLOGÍAS Y HERRAMIENTAS
+
+- **PYTHON 3.10+**
+- **JUPYTER NOTEBOOKS**
+- **PANDAS, NUMPY, MATPLOTLIB, SEABORN**
+- **SCIKIT-LEARN**
+- **COOKIECUTTER DATA SCIENCE**
+- **GIT + GITHUB**
+
+---
+
+## 📁 INSTALACIÓN
+
+```BASH
+GIT CLONE HTTPS://GITHUB.COM/EDUARDOSALDIVIA/EXCLUSION_SOCIAL_TDF_ML.GIT
+CD EXCLUSION_SOCIAL_TDF
+PIP INSTALL -R REQUIREMENTS.TXT
+```
+
+## 📈 RESULTADO ESPERADO
+
+- MODELOS ENTRENADOS CAPACES DE PREDECIR EXCLUSIÓN SOCIAL.
+- MÉTRICAS DE RENDIMIENTO COMPARADAS ENTRE ALGORITMOS.
+- VISUALIZACIONES E INTERPRETACIONES ACCESIBLES PARA EQUIPOS TÉCNICOS Y DE POLÍTICA SOCIAL.
